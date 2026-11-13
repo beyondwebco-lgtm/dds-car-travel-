@@ -1,6 +1,6 @@
 /**
  * D.D.S FRIENDS CAR TRAVELS - Client Application Script
- * Features: WhatsApp Booking Integration, Vehicle Filter, Lightbox, Dynamic Pre-fills
+ * Features: WhatsApp Booking Integration, Vehicle Filter, Dynamic Pre-fills, Responsive Touch Handling
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -216,104 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. Gallery Lightbox Functionality
-  const galleryItems = document.querySelectorAll('.gallery-item');
-  const lightboxModal = document.getElementById('lightboxModal');
-  const lightboxImg = document.getElementById('lightboxImg');
-  const lightboxCaption = document.getElementById('lightboxCaption');
-  const lightboxClose = document.getElementById('lightboxClose');
-  const lightboxPrev = document.getElementById('lightboxPrev');
-  const lightboxNext = document.getElementById('lightboxNext');
-
-  let currentGalleryIndex = 0;
-  const galleryData = [];
-
-  galleryItems.forEach((item, index) => {
-    const img = item.querySelector('img');
-    const title = item.querySelector('.gallery-item-title') ? item.querySelector('.gallery-item-title').innerText : '';
-    const category = item.querySelector('.gallery-item-category') ? item.querySelector('.gallery-item-category').innerText : '';
-
-    galleryData.push({
-      src: img.getAttribute('src'),
-      title: `${title} (${category})`
-    });
-
-    item.addEventListener('click', () => {
-      openLightbox(index);
-    });
-  });
-
-  function openLightbox(index) {
-    if (!lightboxModal) return;
-    currentGalleryIndex = index;
-    lightboxImg.src = galleryData[index].src;
-    lightboxCaption.innerText = galleryData[index].title;
-    lightboxModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightbox() {
-    if (!lightboxModal) return;
-    lightboxModal.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  function nextLightbox() {
-    currentGalleryIndex = (currentGalleryIndex + 1) % galleryData.length;
-    lightboxImg.src = galleryData[currentGalleryIndex].src;
-    lightboxCaption.innerText = galleryData[currentGalleryIndex].title;
-  }
-
-  function prevLightbox() {
-    currentGalleryIndex = (currentGalleryIndex - 1 + galleryData.length) % galleryData.length;
-    lightboxImg.src = galleryData[currentGalleryIndex].src;
-    lightboxCaption.innerText = galleryData[currentGalleryIndex].title;
-  }
-
-  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-  if (lightboxNext) lightboxNext.addEventListener('click', nextLightbox);
-  if (lightboxPrev) lightboxPrev.addEventListener('click', prevLightbox);
-
-  // Close lightbox on backdrop click
-  if (lightboxModal) {
-    lightboxModal.addEventListener('click', (e) => {
-      if (e.target === lightboxModal) {
-        closeLightbox();
-      }
-    });
-  }
-
-  // Keyboard navigation for lightbox
-  document.addEventListener('keydown', (e) => {
-    if (!lightboxModal || !lightboxModal.classList.contains('active')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') nextLightbox();
-    if (e.key === 'ArrowLeft') prevLightbox();
-  });
-
-  // Touch Swipe Support for Lightbox (Phones & Tablets)
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  if (lightboxModal) {
-    lightboxModal.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    lightboxModal.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      const swipeDistance = touchEndX - touchStartX;
-      if (Math.abs(swipeDistance) > 45) {
-        if (swipeDistance < 0) {
-          nextLightbox(); // Swiped left -> next
-        } else {
-          prevLightbox(); // Swiped right -> prev
-        }
-      }
-    }, { passive: true });
-  }
-
-  // 7. Toast Notification Utility
+  // 6. Toast Notification Utility
   function showToast(message) {
     let toast = document.getElementById('customToast');
     if (!toast) {
