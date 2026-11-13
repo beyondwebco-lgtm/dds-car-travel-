@@ -1421,7 +1421,8 @@ a {
   padding: 12px 16px;
   border-radius: var(--radius-md);
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 16px; /* Prevents auto zoom on mobile browsers */
+  min-height: 48px;
   width: 100%;
   transition: var(--transition-fast);
 }
@@ -1843,67 +1844,360 @@ a {
 }
 
 /* ===================================================================
-   RESPONSIVE MEDIA QUERIES
+   RESPONSIVE MEDIA QUERIES (Phones, Tablets & Desktops)
    =================================================================== */
+
+/* 1. Large Tablets & Small Desktops (max-width: 991.98px) */
 @media (max-width: 991.98px) {
-  .hero-title {
-    font-size: 2.8rem;
+  .hero-section {
+    background-attachment: scroll !important; /* Smooth scroll on mobile/touch */
+    min-height: auto;
+    padding: 4.5rem 0 3.5rem 0;
   }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 6vw, 3.2rem);
+  }
+
   .section-title {
     font-size: 2.1rem;
   }
+
+  /* Mobile Navbar Menu styling */
+  .navbar-collapse {
+    background: rgba(13, 16, 21, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-md);
+    padding: 1.2rem 1.4rem;
+    margin-top: 14px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.85);
+  }
+
+  .nav-link-custom {
+    padding: 11px 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-link-custom::after {
+    display: none;
+  }
+
+  /* Vehicle Filter Tabs Horizontal Swipe on touch devices */
+  .vehicle-filter-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+    padding: 6px 4px 14px 4px;
+    margin-bottom: 2.2rem;
+    gap: 8px;
+    scrollbar-width: none;
+  }
+
+  .vehicle-filter-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 0.85rem;
+    padding: 9px 18px;
+  }
+
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .about-image-wrapper img {
-    height: 380px;
+    height: 400px;
   }
+
   .dispatch-timer-visual {
     margin-bottom: 2.5rem;
   }
+
+  .map-wrapper {
+    min-height: 380px;
+  }
 }
 
+/* 2. Tablets in Portrait & Large Phones (max-width: 767.98px) */
 @media (max-width: 767.98px) {
+  body {
+    padding-bottom: 68px; /* Space for the mobile sticky bottom bar */
+  }
+
+  .top-bar {
+    display: none !important;
+  }
+
   .hero-section {
-    padding: 3.5rem 0 3rem 0;
-    min-height: auto;
+    padding: 3.5rem 0 2.5rem 0;
   }
+
   .hero-title {
-    font-size: 2.2rem;
+    font-size: clamp(2rem, 7vw, 2.6rem);
+    letter-spacing: -0.5px;
   }
+
   .hero-subtitle {
     font-size: 1.05rem;
+    margin-bottom: 1.6rem;
   }
+
+  .company-badge {
+    font-size: 0.82rem;
+    padding: 6px 16px;
+    letter-spacing: 1.2px;
+  }
+
   .section-title {
     font-size: 1.85rem;
   }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
   .about-perks-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
+
+  .about-card-badge {
+    padding: 1.8rem 1.4rem;
+  }
+
+  .about-image-wrapper img {
+    height: 320px;
+  }
+
+  .about-floating-experience {
+    bottom: 15px;
+    left: 15px;
+    padding: 0.8rem 1.1rem;
+  }
+
   .gallery-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
+
+  .gallery-item {
+    height: 240px;
+  }
+
   .booking-box {
-    padding: 2rem 1.4rem;
+    padding: 2rem 1.3rem;
   }
+
   .dispatch-big-number {
     font-size: 3.8rem;
   }
+
+  .india-state-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .state-badge-card {
+    padding: 1rem 0.8rem;
+  }
+
+  .state-hubs {
+    font-size: 0.72rem;
+  }
+
+  .map-wrapper {
+    min-height: 300px;
+    height: 320px;
+  }
+
+  /* Floating Buttons on mobile */
   .floating-whatsapp-btn {
-    bottom: 75px;
-    right: 20px;
-    width: 52px;
-    height: 52px;
-    font-size: 1.7rem;
+    bottom: 78px;
+    right: 18px;
+    width: 54px;
+    height: 54px;
+    font-size: 1.8rem;
   }
+
   .back-to-top-btn {
-    bottom: 135px;
-    right: 20px;
-    width: 42px;
-    height: 42px;
+    bottom: 140px;
+    right: 18px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
   }
+
   .mobile-sticky-bar {
     display: block;
+  }
+}
+
+/* 3. Small Mobile Phones (max-width: 575.98px) */
+@media (max-width: 575.98px) {
+  .navbar-brand-img {
+    height: 42px;
+    max-width: 210px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.85rem, 8vw, 2.3rem);
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-cta-group .btn-primary-gold,
+  .hero-cta-group .btn-outline-gold {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .hero-features-list {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .hero-feature-pill {
+    width: 100%;
+    font-size: 0.82rem;
+    padding: 7px 14px;
+  }
+
+  .stat-item {
+    gap: 10px;
+  }
+
+  .stat-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.25rem;
+  }
+
+  .stat-number {
+    font-size: 1.35rem;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+  }
+
+  .hero-stats-bar {
+    padding: 1.2rem 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .vehicle-img-container {
+    height: 200px;
+  }
+
+  .vehicle-body {
+    padding: 1.3rem 1.1rem;
+  }
+
+  .service-card {
+    padding: 1.6rem 1.2rem;
+  }
+
+  .dispatch-timer-visual {
+    padding: 2rem 1.2rem;
+  }
+
+  .dispatch-badge-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+  }
+
+  .dispatch-big-number {
+    font-size: 3.2rem;
+  }
+
+  .dispatch-big-unit {
+    font-size: 1.1rem;
+  }
+
+  .popular-routes-container {
+    padding: 1.5rem 1.1rem;
+  }
+
+  .route-badge {
+    padding: 0.8rem 1rem;
+  }
+
+  .contact-info-card {
+    padding: 1.8rem 1.2rem;
+  }
+
+  .contact-channel-item {
+    gap: 12px;
+  }
+
+  .contact-icon-bubble {
+    width: 42px;
+    height: 42px;
+    font-size: 1.15rem;
+  }
+
+  /* Lightbox on mobile phones */
+  .lightbox-content {
+    max-width: 95vw;
+  }
+
+  .lightbox-img {
+    max-height: 65vh;
+  }
+
+  .lightbox-nav-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 0.95rem;
+  }
+
+  .lightbox-prev { left: 8px; }
+  .lightbox-next { right: 8px; }
+
+  .lightbox-close {
+    top: 15px;
+    right: 15px;
+    font-size: 1.8rem;
+  }
+}
+
+/* 4. Ultra-Compact Phones (max-width: 359.98px) */
+@media (max-width: 359.98px) {
+  .hero-title {
+    font-size: 1.7rem;
+  }
+
+  .company-badge {
+    font-size: 0.72rem;
+    padding: 5px 12px;
+  }
+
+  .india-state-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .navbar-brand-img {
+    height: 36px;
   }
 }
 

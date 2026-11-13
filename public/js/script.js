@@ -58,10 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Auto close mobile navbar collapse upon clicking nav-link
+  // Auto close mobile navbar collapse upon clicking nav-link or CTA buttons
   const navbarCollapse = document.getElementById('navbarSupportedContent');
   if (navbarCollapse) {
-    const navItems = navbarCollapse.querySelectorAll('.nav-link');
+    const navItems = navbarCollapse.querySelectorAll('.nav-link, a[href^="#"]');
     navItems.forEach((item) => {
       item.addEventListener('click', () => {
         const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
@@ -290,6 +290,28 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'ArrowRight') nextLightbox();
     if (e.key === 'ArrowLeft') prevLightbox();
   });
+
+  // Touch Swipe Support for Lightbox (Phones & Tablets)
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  if (lightboxModal) {
+    lightboxModal.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightboxModal.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const swipeDistance = touchEndX - touchStartX;
+      if (Math.abs(swipeDistance) > 45) {
+        if (swipeDistance < 0) {
+          nextLightbox(); // Swiped left -> next
+        } else {
+          prevLightbox(); // Swiped right -> prev
+        }
+      }
+    }, { passive: true });
+  }
 
   // 7. Toast Notification Utility
   function showToast(message) {
