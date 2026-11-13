@@ -1,0 +1,21 @@
+{
+  "name": "dds-friends-car-travels",
+  "version": "1.0.0",
+  "description": "D.D.S FRIENDS CAR TRAVELS - Car Rental & Travel Services in Hyderabad & All India",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "car-rental",
+    "travels",
+    "hyderabad",
+    "dds-friends-car-travels"
+  ],
+  "author": "D.D.S FRIENDS CAR TRAVELS",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
+

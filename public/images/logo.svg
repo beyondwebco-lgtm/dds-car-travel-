@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD700" />
+      <stop offset="50%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#B45309" />
+    </linearGradient>
+    <linearGradient id="goldGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#FDE047" stop-opacity="0.9" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Crest Shield -->
+  <polygon points="110,25 180,55 180,150 110,195 40,150 40,55" fill="#121216" stroke="url(#goldGrad)" stroke-width="4" filter="url(#glow)"/>
+  <polygon points="110,38 168,64 168,142 110,182 52,142 52,64" fill="#18181f" stroke="#FDE047" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+  <!-- DDS Monogram in Crest -->
+  <text x="110" y="65" font-family="'Montserrat', 'Arial Black', sans-serif" font-size="16" font-weight="900" fill="#FDE047" text-anchor="middle" letter-spacing="2">DDS</text>
+
+  <!-- Car Silhouette in Crest -->
+  <path d="M 62 130 Q 75 115 90 102 Q 105 100 132 100 Q 148 114 158 126 L 158 134 L 62 134 Z" fill="#202028" stroke="url(#goldGrad)" stroke-width="2.5" />
+  <!-- Car Windows -->
+  <path d="M 85 112 Q 105 106 126 106 L 138 116 L 85 116 Z" fill="#F59E0B" opacity="0.85"/>
+  <!-- Wheels -->
+  <circle cx="82" cy="134" r="8" fill="#121216" stroke="url(#goldGrad)" stroke-width="3"/>
+  <circle cx="82" cy="134" r="3" fill="#FFF"/>
+  <circle cx="138" cy="134" r="8" fill="#121216" stroke="url(#goldGrad)" stroke-width="3"/>
+  <circle cx="138" cy="134" r="3" fill="#FFF"/>
+
+  <!-- Small Wings/Speed lines -->
+  <path d="M 28 95 L 42 102 L 28 109" stroke="url(#goldGrad)" stroke-width="2" fill="none" opacity="0.7"/>
+  <path d="M 180 102 L 194 95 L 180 109" stroke="url(#goldGrad)" stroke-width="2" fill="none" opacity="0.7"/>
+
+  <!-- Brand Typography -->
+  <text x="215" y="75" font-family="'Impact', 'Oswald', 'Montserrat', sans-serif" font-size="56" font-weight="900" fill="url(#goldGrad)" letter-spacing="3">D.D.S</text>
+  <text x="390" y="75" font-family="'Montserrat', 'Arial Black', sans-serif" font-size="44" font-weight="800" fill="#FFFFFF" letter-spacing="3">FRIENDS</text>
+  <text x="217" y="125" font-family="'Montserrat', 'Arial Black', sans-serif" font-size="28" font-weight="800" fill="#FDE047" letter-spacing="8">CAR TRAVELS</text>
+
+  <!-- Five Stars -->
+  <g fill="url(#goldGrad)" transform="translate(635, 107) scale(0.9)">
+    <polygon points="10,1 4,19 19,7 1,7 16,19"/>
+    <g transform="translate(25, 0)"><polygon points="10,1 4,19 19,7 1,7 16,19"/></g>
+    <g transform="translate(50, 0)"><polygon points="10,1 4,19 19,7 1,7 16,19"/></g>
+    <g transform="translate(75, 0)"><polygon points="10,1 4,19 19,7 1,7 16,19"/></g>
+    <g transform="translate(100, 0)"><polygon points="10,1 4,19 19,7 1,7 16,19"/></g>
+  </g>
+
+  <!-- Divider Line with Diamond Center -->
+  <line x1="217" y1="148" x2="880" y2="148" stroke="url(#goldGlow)" stroke-width="2"/>
+  <polygon points="548,144 553,148 548,152 543,148" fill="#FFD700"/>
+
+  <!-- Tagline -->
+  <text x="218" y="178" font-family="'Segoe UI', 'Inter', sans-serif" font-size="15" font-weight="700" fill="#E5E7EB" letter-spacing="4">HYDERABAD • ALL INDIA TRAVELS • 24/7 CAR RENTAL</text>
+</svg>
+
